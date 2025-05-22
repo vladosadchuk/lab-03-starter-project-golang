@@ -8,5 +8,6 @@ RUN go build -o build
 FROM scratch AS runner
 
 COPY --from=builder /app/build build
+COPY --from=builder /app/templates templates
 
 CMD ["./build", "serve"]
