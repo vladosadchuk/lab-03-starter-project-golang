@@ -5,7 +5,7 @@ COPY . .
 RUN go mod download
 RUN go build -o build
 
-FROM scratch AS runner
+FROM gcr.io/distroless/static-debian12 AS runner
 
 COPY --from=builder /app/build build
 COPY --from=builder /app/templates templates
